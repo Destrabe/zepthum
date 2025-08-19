@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const arrow = document.getElementById("arrowIcon");
   const logout = document.getElementById("logout");
 
-  const arrowDown = "/src/assets/svg/arrow-down.svg";
-  const arrowUp = "/src/assets/svg/arrow-up.svg";
+  const arrowDown = "/assets/svg/arrow-down.svg";
+  const arrowUp = "/assets/svg/arrow-up.svg";
 
   toggle.addEventListener("click", () => {
     const isOpen = menu.classList.toggle("show");
