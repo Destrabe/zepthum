@@ -1,10 +1,11 @@
 import { defineConfig } from "astro/config";
 import node from "@astrojs/node";
 
+import vercel from "@astrojs/vercel/serverless";
+
 export default defineConfig({
-  adapter: node({
-    mode: "development",
-  }),
+  output: "server",
+  adapter: vercel(),
   server: {
     port: 3000,
   },
