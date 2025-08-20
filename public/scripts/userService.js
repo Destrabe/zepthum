@@ -10,10 +10,13 @@ window.userService = {
         email,
         password,
       });
+      console.log(response);
+      console.log(response.data);
+
       const token = response.data.token;
-      if (!token) throw new Error("No token received");
-      setCookie("token", token);
-      console.log("login correcto");
+      // if (!token) throw new Error("No token received");
+      // setCookie("token", token);
+      // console.log("login correcto");
       window.location.href = "/dashboard";
     } catch (error) {
       console.log("login fallido");
