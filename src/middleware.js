@@ -1,19 +1,19 @@
 export async function onRequest(context, next) {
-  const isLoggedIn = context.cookies.get("token")?.value;
+  const token = context.cookies.get("token")?.value;
   const protectedRoutes = ["/dashboard", "/podium", "/chat"];
 
-  // Ignora recursos estáticos (archivos con punto en el nombre)
+  // Ignora recursos estáticos
   if (context.url.pathname.includes(".")) {
     return next();
   }
 
-  // Si está autenticado y entra a /login, redirige a /
-  if (context.url.pathname === "/login" && isLoggedIn) {
+  // Si está autenticado y entra a /login, redirige
+  if (context.url.pathname === "/login" && token) {
     return context.redirect("/dashboard");
   }
 
   // Si NO está autenticado y entra a una ruta protegida, redirige a /login
-  if (protectedRoutes.includes(context.url.pathname) && !isLoggedIn) {
+  if (protectedRoutes.includes(context.url.pathname) && !token) {
     return context.redirect("/login");
   }
 
