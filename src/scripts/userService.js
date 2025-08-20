@@ -1,8 +1,9 @@
 const userService = {
   //LOGIN
   login: async (email, password) => {
+    console.log(import.meta.env.PUBLIC_API_URL);
     try {
-      const user = await fetch("http://localhost:3005/usuarios/login", {
+      const user = await fetch(`${import.meta.env.PUBLIC_API_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -20,7 +21,7 @@ const userService = {
   //REGISTRO
   register: async (username, email, password) => {
     try {
-      const user = await fetch("http://localhost:3005/usuarios/register", {
+      const user = await fetch(`${import.meta.env.PUBLIC_API_URL}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +39,7 @@ const userService = {
 
   logout: async () => {
     try {
-      await fetch("http://localhost:3005/usuarios/logout", {
+      await fetch(`${import.meta.env.PUBLIC_API_URL}/logout`, {
         method: "GET",
         credentials: "include",
       });
