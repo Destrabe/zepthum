@@ -17,6 +17,8 @@ window.userService = {
       });
       const data = await response.json();
       const token = data.token;
+      console.log(response);
+      console.log(data);
       if (!token) throw new Error("No token received");
       setCookie("token", token);
       console.log("login correcto");
