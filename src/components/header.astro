@@ -42,10 +42,11 @@ import "../styles/header.css";
       </div>
     </div>
   </div>
-
+  <script>
+    window.PUBLIC_API_URL = import.meta.env.PUBLIC_API_URL;
+  </script>
+  <script type="module" src="/scripts/userService.js"></script>
   <script type="module">
-    import userService from "/scripts/userService.js";
-
     document.addEventListener("DOMContentLoaded", () => {
       const toggle = document.getElementById("profileToggle");
       const menu = document.getElementById("dropdownMenu");

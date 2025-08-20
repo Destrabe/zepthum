@@ -6,7 +6,7 @@ window.userService = {
   login: async (email, password) => {
     console.log(apiUrl);
     try {
-      const user = await fetch(`${apiUrl}/login`, {
+      const user = await fetch(`${apiUrl}/usuarios/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,7 +24,7 @@ window.userService = {
   //REGISTRO
   register: async (username, email, password) => {
     try {
-      const user = await fetch(`${apiUrl}/register`, {
+      const user = await fetch(`${apiUrl}/usuarios/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +42,7 @@ window.userService = {
 
   logout: async () => {
     try {
-      await fetch(`${apiUrl}/logout`, {
+      await fetch(`${apiUrl}/usuarios/logout`, {
         method: "GET",
         credentials: "include",
       });
