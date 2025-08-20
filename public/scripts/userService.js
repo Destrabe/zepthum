@@ -1,9 +1,9 @@
-const apiUrl = import.meta.env.PUBLIC_API_URL;
+const apiUrl = window.PUBLIC_API_URL;
 
-const userService = {
+window.userService = {
   //LOGIN
 
-  login: async (email, password, apiUrl) => {
+  login: async (email, password) => {
     console.log(apiUrl);
     try {
       const user = await fetch(`${apiUrl}/login`, {
@@ -22,7 +22,7 @@ const userService = {
     }
   },
   //REGISTRO
-  register: async (username, email, password, apiUrl) => {
+  register: async (username, email, password) => {
     try {
       const user = await fetch(`${apiUrl}/register`, {
         method: "POST",
@@ -53,5 +53,3 @@ const userService = {
     }
   },
 };
-
-export default userService;
