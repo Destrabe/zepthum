@@ -61,7 +61,7 @@ import "../styles/register.css";
     </div>
   </div>
   <script type="module">
-    import userService from "../scripts/userService.js";
+    import userService from "/scripts/userService.js";
 
     document
       .getElementById("register-form")
@@ -70,7 +70,7 @@ import "../styles/register.css";
         const name = document.getElementById("username").value;
         const email = document.getElementById("correo").value;
         const password = document.getElementById("password").value;
-        await userService.register(name, email, password);
+        await userService.register(name, email, password, apiUrl);
       });
   </script>
 </Layout>

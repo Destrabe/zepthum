@@ -1,5 +1,6 @@
 ---
 import "../styles/header.css";
+const apiUrl = import.meta.env.PUBLIC_API_URL;
 ---
 
 <header>
@@ -43,5 +44,41 @@ import "../styles/header.css";
     </div>
   </div>
 
-  <script type="module" src="/scripts/profileMenu.js"></script>
+  <script type="module">
+    import userService from "/scripts/userService.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("profileToggle");
+      const menu = document.getElementById("dropdownMenu");
+      const arrow = document.getElementById("arrowIcon");
+      const logout = document.getElementById("logout");
+
+      const arrowDown = "/assets/svg/arrow-down.svg";
+      const arrowUp = "/assets/svg/arrow-up.svg";
+
+      toggle.addEventListener("click", () => {
+        const isOpen = menu.classList.toggle("show");
+        arrow.src = isOpen ? arrowUp : arrowDown;
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove("show");
+          arrow.src = arrowDown;
+        }
+      });
+
+      logout.addEventListener("click", (event) => {
+        event.preventDefault();
+        userService
+          .logout(apiUrl)
+          .then(() => {
+            window.location.href = "/login";
+          })
+          .catch((error) => {
+            console.error("Error during logout:", error);
+          });
+      });
+    });
+  </script>
 </header>

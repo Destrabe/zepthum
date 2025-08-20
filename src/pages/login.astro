@@ -71,7 +71,7 @@ const apiUrl = import.meta.env.PUBLIC_API_URL;
         e.preventDefault();
         const email = document.getElementById("correo").value;
         const password = document.getElementById("password").value;
-        await userService.login(email, password);
+        await userService.login(email, password, apiUrl);
       });
   </script>
 </Layout>

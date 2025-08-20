@@ -3,25 +3,25 @@ const userService = {
   login: async (email, password, apiUrl) => {
     console.log(apiUrl);
     try {
-      // const user = await fetch(`${import.meta.env.PUBLIC_API_URL}/login`, {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({ email, password }),
-      //   credentials: "include",
-      // });
-      // console.log("login correcto");
-      // window.location.href = "/dashboard";
+      const user = await fetch(`${apiUrl}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+        credentials: "include",
+      });
+      console.log("login correcto");
+      window.location.href = "/dashboard";
     } catch (error) {
       console.log("login fallido");
       console.log("prueba");
     }
   },
   //REGISTRO
-  register: async (username, email, password) => {
+  register: async (username, email, password, apiUrl) => {
     try {
-      const user = await fetch(`${import.meta.env.PUBLIC_API_URL}/register`, {
+      const user = await fetch(`${apiUrl}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const userService = {
 
   logout: async () => {
     try {
-      await fetch(`${import.meta.env.PUBLIC_API_URL}/logout`, {
+      await fetch(`${apiUrl}/logout`, {
         method: "GET",
         credentials: "include",
       });
