@@ -1,6 +1,5 @@
 ---
 import "../styles/header.css";
-const apiUrl = import.meta.env.PUBLIC_API_URL;
 ---
 
 <header>
@@ -71,7 +70,7 @@ const apiUrl = import.meta.env.PUBLIC_API_URL;
       logout.addEventListener("click", (event) => {
         event.preventDefault();
         userService
-          .logout(apiUrl)
+          .logout()
           .then(() => {
             window.location.href = "/login";
           })

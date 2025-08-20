@@ -6,7 +6,14 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   output: "server",
   adapter: vercel(),
-  server: {
-    port: 3000,
+  vite: {
+    define: {
+      __APP_VERSION__: JSON.stringify("1.0.0"),
+    },
+    server: {
+      proxy: {
+        "/api": import.meta.env.PUBLIC_API_URL ?? "http://localhost:3000",
+      },
+    },
   },
 });

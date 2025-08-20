@@ -2,6 +2,7 @@
 import Layout from "../layouts/loginLayout.astro";
 export const prerender = false;
 import "../styles/register.css";
+import userService from "../scripts/userService.js";
 ---
 
 <Layout title="Zepthum - Register">
@@ -61,8 +62,6 @@ import "../styles/register.css";
     </div>
   </div>
   <script type="module">
-    import userService from "/scripts/userService.js";
-
     document
       .getElementById("register-form")
       .addEventListener("submit", async (e) => {
@@ -70,7 +69,7 @@ import "../styles/register.css";
         const name = document.getElementById("username").value;
         const email = document.getElementById("correo").value;
         const password = document.getElementById("password").value;
-        await userService.register(name, email, password, apiUrl);
+        await userService.register(name, email, password);
       });
   </script>
 </Layout>

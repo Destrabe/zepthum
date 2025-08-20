@@ -2,7 +2,7 @@
 import Layout from "../layouts/loginLayout.astro";
 export const prerender = false;
 import "../styles/login.css";
-const apiUrl = import.meta.env.PUBLIC_API_URL;
+import userService from "../scripts/userService.js";
 ---
 
 <Layout title="Zepthum - Login">
@@ -63,15 +63,13 @@ const apiUrl = import.meta.env.PUBLIC_API_URL;
     </div>
   </div>
   <script type="module">
-    import userService from "/scripts/userService.js";
-
     document
       .getElementById("login-form")
       .addEventListener("submit", async (e) => {
         e.preventDefault();
         const email = document.getElementById("correo").value;
         const password = document.getElementById("password").value;
-        await userService.login(email, password, apiUrl);
+        await userService.login(email, password);
       });
   </script>
 </Layout>

@@ -1,5 +1,8 @@
+const apiUrl = import.meta.env.PUBLIC_API_URL;
+
 const userService = {
   //LOGIN
+
   login: async (email, password, apiUrl) => {
     console.log(apiUrl);
     try {
@@ -12,7 +15,7 @@ const userService = {
         credentials: "include",
       });
       console.log("login correcto");
-      window.location.href = "/dashboard";
+      // window.location.href = "/dashboard";
     } catch (error) {
       console.log("login fallido");
       console.log("prueba");
