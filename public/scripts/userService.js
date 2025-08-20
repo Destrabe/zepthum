@@ -42,16 +42,11 @@ window.userService = {
     }
   },
 
-  logout: async () => {
-    try {
-      await fetch(`${apiUrl}/usuarios/logout`, {
-        method: "GET",
-        credentials: "include",
-      });
-      console.log("logout correcto");
-      window.location.href = "/login";
-    } catch (error) {
-      console.log("error al hacer logout", error);
-    }
-  },
+  logout : () => {
+  // Elimina la cookie del token
+  Cookies.remove("token");
+
+  // Redirige al login
+  window.location.href = "/login";
+};
 };
