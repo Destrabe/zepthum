@@ -3,16 +3,16 @@ const userService = {
   login: async (email, password) => {
     console.log(import.meta.env.PUBLIC_API_URL);
     try {
-      const user = await fetch(`${import.meta.env.PUBLIC_API_URL}/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-        credentials: "include",
-      });
-      console.log("login correcto");
-      window.location.href = "/dashboard";
+      // const user = await fetch(`${import.meta.env.PUBLIC_API_URL}/login`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ email, password }),
+      //   credentials: "include",
+      // });
+      // console.log("login correcto");
+      // window.location.href = "/dashboard";
     } catch (error) {
       console.log("login fallido");
       console.log("prueba");
