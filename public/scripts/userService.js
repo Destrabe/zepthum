@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const apiUrl = window.PUBLIC_API_URL;
 
 window.userService = {
