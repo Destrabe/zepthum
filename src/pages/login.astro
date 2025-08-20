@@ -2,6 +2,7 @@
 import Layout from "../layouts/loginLayout.astro";
 export const prerender = false;
 import "../styles/login.css";
+const apiUrl = import.meta.env.PUBLIC_API_URL;
 ---
 
 <Layout title="Zepthum - Login">
@@ -62,7 +63,7 @@ import "../styles/login.css";
     </div>
   </div>
   <script type="module">
-    import userService from "../scripts/userService.js";
+    import userService from "/scripts/userService.js";
 
     document
       .getElementById("login-form")

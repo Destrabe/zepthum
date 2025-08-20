@@ -1,7 +1,7 @@
 const userService = {
   //LOGIN
-  login: async (email, password) => {
-    console.log(import.meta.env.PUBLIC_API_URL);
+  login: async (email, password, apiUrl) => {
+    console.log(apiUrl);
     try {
       // const user = await fetch(`${import.meta.env.PUBLIC_API_URL}/login`, {
       //   method: "POST",
