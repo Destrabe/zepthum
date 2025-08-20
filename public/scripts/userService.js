@@ -6,19 +6,11 @@ window.userService = {
   login: async (email, password) => {
     console.log(apiUrl);
     try {
-      const response = await fetch(`${apiUrl}/usuarios/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify({ email, password }),
-        credentials: "include",
+      const response = await axios.post(`${apiUrl}/usuarios/login`, {
+        email,
+        password,
       });
-      const data = await response.json();
-      const token = data.token;
-      console.log(response);
-      console.log(data);
+      const token = response.data.token;
       if (!token) throw new Error("No token received");
       setCookie("token", token);
       console.log("login correcto");
