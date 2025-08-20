@@ -6,16 +6,21 @@ window.userService = {
   login: async (email, password) => {
     console.log(apiUrl);
     try {
-      const user = await fetch(`${apiUrl}/usuarios/login`, {
+      const response = await fetch(`${apiUrl}/usuarios/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+
         body: JSON.stringify({ email, password }),
         credentials: "include",
       });
+      const data = await response.json();
+      const token = data.token;
+      if (!token) throw new Error("No token received");
+      setCookie("token", token);
       console.log("login correcto");
-      // window.location.href = "/dashboard";
+      window.location.href = "/dashboard";
     } catch (error) {
       console.log("login fallido");
       console.log("prueba");
