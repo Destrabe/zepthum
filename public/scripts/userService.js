@@ -42,11 +42,11 @@ window.userService = {
     }
   },
 
-  logout : () => {
-  // Elimina la cookie del token
-  Cookies.remove("token");
+  logout: () => {
+    // Elimina la cookie del token
+    Cookies.remove("token");
 
-  // Redirige al login
-  window.location.href = "/login";
-};
+    // Redirige al login
+    window.location.href = "/login";
+  },
 };
