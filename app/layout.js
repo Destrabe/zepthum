@@ -1,3 +1,5 @@
+import "./global.css";
+
 export const metadata = {
   title: "Zepthum",
   description: "A Next.js project for Zepthum",
