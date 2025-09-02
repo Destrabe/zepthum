@@ -1,4 +1,6 @@
-export default async function HomePage() {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  return <h1>Hello World</h1>;
+import { redirect } from "next/navigation";
+
+export default function Home() {
+  redirect("/login"); // Redirige inmediatamente al cargar la página
+  return null; // No renderiza nada
 }

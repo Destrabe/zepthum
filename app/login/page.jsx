@@ -15,7 +15,7 @@ function LoginPage() {
               <div className="logo">
                 <img
                   src="/assets/svg/logo_tem.svg"
-                  class="logo-img"
+                  className="logo-img"
                   alt="Logo"
                 />
               </div>
@@ -28,15 +28,15 @@ function LoginPage() {
             </div>
             {/* Formulario*/}
             <div className="form-section">
-              <div class="form-container">
+              <div className="form-container">
                 <h1>Iniciar sesión</h1>
                 <form id="login-form">
-                  <div class="input-group">
+                  <div className="input-group">
                     <label htmlFor="correo">Correo</label>
                     <input type="email" id="correo" name="email" required />
                   </div>
-                  <div class="input-group">
-                    <label for="password">Contraseña</label>
+                  <div className="input-group">
+                    <label htmlFor="password">Contraseña</label>
                     <input
                       type="password"
                       id="password"
@@ -44,7 +44,7 @@ function LoginPage() {
                       required
                     />
                   </div>
-                  <div class="olvidar-pass">
+                  <div className="olvidar-pass">
                     <a href="#">¿Olvidaste tu contraseña?</a>
                   </div>
                   <button className="loginBtn" type="submit">

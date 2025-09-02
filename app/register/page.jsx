@@ -34,11 +34,11 @@ function RegisterPage() {
                     <input type="text" id="username" name="username" required />
                   </div>
                   <div className="input-group">
-                    <label for="correo">Correo</label>
+                    <label htmlFor="correo">Correo</label>
                     <input type="email" id="correo" name="email" required />
                   </div>
                   <div className="input-group">
-                    <label for="password">Contraseña</label>
+                    <label htmlFor="password">Contraseña</label>
                     <input
                       type="password"
                       id="password"
