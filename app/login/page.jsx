@@ -1,6 +1,7 @@
+import LoginBtn from "@/components/button/LoginBtn";
 import "./login.css";
 
-function LoginPage() {
+export default function LoginPage() {
   return (
     <div className="split-container">
       <div className="left-side">
@@ -47,9 +48,7 @@ function LoginPage() {
                   <div className="olvidar-pass">
                     <a href="#">¿Olvidaste tu contraseña?</a>
                   </div>
-                  <button className="loginBtn" type="submit">
-                    Entrar
-                  </button>
+                  <LoginBtn />
                 </form>
               </div>
               <div className="registrarse">
@@ -63,5 +62,3 @@ function LoginPage() {
     </div>
   );
 }
-
-export default LoginPage;
