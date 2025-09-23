@@ -4,7 +4,7 @@ function RegisterPage() {
   return (
     <div className="split-container">
       <div className="left-side">
-        <div className="container">
+        <div className="containerRegister">
           <div className="main">
             <div className="header">
               {/*<!--Logo -->*/}

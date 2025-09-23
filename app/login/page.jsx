@@ -9,7 +9,7 @@ export default function LoginPage() {
       </div>
       {/* principal*/}
       <div className="right-side">
-        <div className="container">
+        <div className="containerLogin">
           <div className="main">
             {/* header*/}
             <div className="header">

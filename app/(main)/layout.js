@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Header from "@/components/header/header";
 import Sidebar from "@/components/sidebar/sidebar";
-import "@/app/global.css";
+import "./mainGlobal.css";
 
 export default function MainLayout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
