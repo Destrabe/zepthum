@@ -200,7 +200,7 @@ header {
   border-radius: 0.5rem;
   text-align: left;
   transition: color 0.2s;
-  overflow: visible; /* permitir que el hover se expanda */
+  overflow: visible;
 }
 
 .logout-btn::before {
