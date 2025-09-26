@@ -1,8 +1,18 @@
-"use client";
 import Link from "next/link";
+import { useState } from "react";
 import "./header.css";
+import dynamic from "next/dynamic";
+
+const ProfileMenu = dynamic(() => import("../button/ProfileMenu"), {
+  ssr: false,
+});
 
 export default function Header({ toggleMenu, isMenuOpen }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const arrowDown = "/assets/svg/arrow-down.svg";
+  const arrowUp = "/assets/svg/arrow-up.svg";
+
   return (
     <header>
       <div className="left">
@@ -24,28 +34,31 @@ export default function Header({ toggleMenu, isMenuOpen }) {
 
       <div className="right">
         <Link href="#" className="icons-header">
-          <img src="/assets/svg/notifications.svg" alt="notifications" />
+          <img
+            src="/assets/svg/notifications.svg"
+            className="notifications"
+            alt="notifications"
+          />
         </Link>
         <div className="separator"></div>
+
+        {/* Perfil */}
         <div className="profile-dropdown">
-          <div className="profile-info" id="profileToggle">
+          <div className="profile-info">
             <span className="greeting">
               Hola, <strong>Marco Fabian</strong>
             </span>
             <img src="/assets/images/kirby.webp" alt="user" className="user" />
             <img
-              src="/assets/svg/arrow-down.svg"
+              src={isOpen ? arrowUp : arrowDown}
               alt="arrow"
               className="arrow-icon"
+              onClick={() => setIsOpen((prev) => !prev)}
             />
           </div>
 
-          <div className="dropdown-menu">
-            <button className="logout-btn">
-              <img src="/assets/svg/logout.svg" alt="logout" />
-              Cerrar sesión
-            </button>
-          </div>
+          {/* Mostrar menú solo si está abierto */}
+          {isOpen && <ProfileMenu onClose={() => setIsOpen(false)} />}
         </div>
       </div>
     </header>

@@ -1,9 +1,11 @@
+/*Configuracion basica*/
 header {
   z-index: 200;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0.45rem 2rem 0.45rem 1.27rem;
+  align-items: center;
+  padding: 0.75rem 2.5rem 0.75rem 1.2rem;
   border-bottom: 1px solid var(--border-color);
   position: fixed;
   background-color: var(--background-color);
@@ -26,6 +28,7 @@ header {
   cursor: pointer;
 }
 
+/*Menu desplegable*/
 .menu {
   width: 1.5rem;
   height: 1.1rem;
@@ -36,6 +39,7 @@ header {
   align-items: center;
 }
 
+/*Animación del menu*/
 .menu div {
   position: absolute;
   width: 100%;
@@ -73,7 +77,7 @@ header {
   top: 50%;
 }
 
-/*Brand*/
+/*Logo y nombre de la app*/
 .brand {
   display: flex;
   justify-content: center;
@@ -95,6 +99,7 @@ header {
   align-items: center;
   gap: 0rem 1rem;
 }
+
 .right a {
   display: flex;
   justify-content: center;
@@ -105,14 +110,18 @@ header {
 .right a:hover {
   background-color: var(--background-hover);
 }
-.right img {
+
+.notifications {
   width: 1.5rem;
   margin: 0.5rem;
 }
+
+/*Profile photo*/
 .right .user {
   width: 2.1rem;
   border-radius: 50%;
   margin-left: 0.5rem;
+  margin-right: 0;
 }
 
 .separator {
@@ -128,35 +137,47 @@ header {
   flex-direction: column;
   align-items: flex-end;
 }
+
 .profile-info {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  cursor: pointer;
 }
+
 .greeting {
   font-size: 0.85rem;
   color: var(--text-color);
 }
+
 .arrow-icon {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-left: 0.5rem;
 }
 
 /* Dropdown menu */
 .dropdown-menu {
-  display: none;
   position: absolute;
+  display: none;
   top: 100%;
   right: 5px;
   background-color: var(--background-color);
   border-radius: 0.6rem;
-  border: var(--border-color);
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
-  padding: 0.7rem 3.3rem;
-  margin-top: 1rem;
-  z-index: 10;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.7rem 3rem;
+  margin-top: 1.35rem;
+  z-index: 9999;
   white-space: nowrap;
+  min-width: 180px;
+}
+
+.dropdown-menu img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  cursor: pointer;
 }
 
 .dropdown-menu.show {
@@ -165,6 +186,7 @@ header {
 
 /* Logout button */
 .logout-btn {
+  position: relative;
   background: none;
   border: none;
   color: var(--text-color);
@@ -173,9 +195,30 @@ header {
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.5rem;
+  text-align: left;
+  transition: color 0.2s;
+  overflow: visible; /* permitir que el hover se expanda */
 }
-.logout-btn:hover {
-  color: var(--accent-color);
+
+.logout-btn::before {
+  content: "";
+  position: absolute;
+  top: -9px; /* más alto */
+  left: -45px; /* más hacia la izquierda */
+  right: -45px; /* más hacia la derecha */
+  bottom: -9px; /* más abajo */
+  border-radius: 0.5rem;
+  background-color: rgb(242, 250, 255);
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: -1;
+}
+
+.logout-btn:hover::before {
+  opacity: 1;
 }
 
 /* Responsive */
