@@ -10,8 +10,10 @@ export default function LoginBtn({ email, password }) {
   const handleClick = async (event) => {
     event.preventDefault();
     try {
-      setLoading(true);
-      await userService.login(email, password);
+      const res = await userService.login(email, password);
+      if (res.success) {
+        setLoading(true);
+      }
     } catch (error) {
       setLoading(false);
     }
