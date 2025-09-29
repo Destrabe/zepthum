@@ -1,7 +1,12 @@
-import LoginBtn from "@/components/button/LoginBtn";
+"use client";
+import LoginBtn from "@/components/ui/LoginBtn";
 import "./login.css";
+import { useState } from "react";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="split-container">
       <div className="left-side">
@@ -34,13 +39,22 @@ export default function LoginPage() {
                 <form id="login-form">
                   <div className="input-group">
                     <label htmlFor="correo">Correo</label>
-                    <input type="email" id="correo" name="email" required />
+                    <input
+                      type="email"
+                      id="correo"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      name="email"
+                      required
+                    />
                   </div>
                   <div className="input-group">
                     <label htmlFor="password">Contraseña</label>
                     <input
                       type="password"
                       id="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       name="password"
                       required
                     />
@@ -48,7 +62,7 @@ export default function LoginPage() {
                   <div className="olvidar-pass">
                     <a href="#">¿Olvidaste tu contraseña?</a>
                   </div>
-                  <LoginBtn />
+                  <LoginBtn email={email} password={password} />
                 </form>
               </div>
               <div className="registrarse">

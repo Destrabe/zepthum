@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./header.css";
 import dynamic from "next/dynamic";
 
-const ProfileMenu = dynamic(() => import("../button/ProfileMenu"), {
+const ProfileMenu = dynamic(() => import("../ui/ProfileMenu"), {
   ssr: false,
 });
 
