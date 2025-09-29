@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import userService from "@/app/userService"; // 👈 ajusta la ruta si está en otro lado
+import userService from "@/app/userService";
 import "./register.css";
 
 function RegisterPage() {
   const [username, setUsername] = useState("");
-  const [correo, setCorreo] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -15,10 +15,8 @@ function RegisterPage() {
     setLoading(true);
 
     try {
-      await userService.register(username, correo, password);
+      await userService.register(username, email, password);
       alert("Cuenta creada con éxito 🚀");
-      // Opcional: redirigir al login
-      window.location.href = "/login";
     } catch (err) {
       console.error("Error en el registro:", err);
       alert("Hubo un error al registrar la cuenta ❌");
@@ -68,14 +66,14 @@ function RegisterPage() {
                     />
                   </div>
                   <div className="input-group">
-                    <label htmlFor="correo">Correo</label>
+                    <label htmlFor="email">Correo</label>
                     <input
                       type="email"
-                      id="correo"
+                      id="email"
                       name="email"
                       required
-                      value={correo}
-                      onChange={(e) => setCorreo(e.target.value)}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="input-group">
