@@ -9,13 +9,11 @@ export default function LoginBtn({ email, password }) {
 
   const handleClick = async (event) => {
     event.preventDefault();
-    try {
-      const res = await userService.login(email, password);
-      if (res.success) {
-        setLoading(true);
-      }
-    } catch (error) {
-      setLoading(false);
+
+    const success = await userService.login(email, password);
+
+    if (success) {
+      setLoading(true);
     }
   };
 

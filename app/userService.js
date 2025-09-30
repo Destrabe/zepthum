@@ -20,19 +20,21 @@ const userService = {
 
       console.log("✅ Login correcto");
       window.location.href = "/dashboard";
+      return true;
     } catch (error) {
       console.error(
         "❌ Error en login:",
         error.response?.data || error.message
       );
       alert("Login fallido: " + (error.response?.data?.message || "Error"));
+      return false;
     }
   },
 
   // REGISTRO
   register: async (username, email, password) => {
     try {
-      const response = await axios.post(`${apiUrl}/usuarios/register`, {
+      await axios.post(`${apiUrl}/usuarios/register`, {
         username,
         email,
         password,
@@ -42,7 +44,7 @@ const userService = {
       window.location.href = "/login";
     } catch (error) {
       console.error("❌ Error en registro:", error);
-      alert("Registro fallido");
+      alert("Registro fallido: " + (error.response?.data?.message || "Error"));
     }
   },
 
