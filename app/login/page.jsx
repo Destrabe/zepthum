@@ -10,7 +10,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
 
   if (showLoading) {
-    return <Loading duration={300} onFinish={() => setShowLoading(false)} />;
+    return <Loading duration={500} onFinish={() => setShowLoading(false)} />;
   }
 
   return (
