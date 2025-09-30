@@ -1,11 +1,17 @@
 "use client";
 import LoginBtn from "@/components/ui/LoginBtn";
 import "./login.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Loading from "@/components/ui/loading";
 
 export default function LoginPage() {
+  const [showLoading, setShowLoading] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  if (showLoading) {
+    return <Loading duration={300} onFinish={() => setShowLoading(false)} />;
+  }
 
   return (
     <div className="split-container">
@@ -24,6 +30,7 @@ export default function LoginPage() {
                   className="logo-img"
                   alt="Logo"
                 />
+                <span className="logo-name">Zepthum</span>
               </div>
               <span className="welcome-text">
                 Productividad impulsada por la competencia.
