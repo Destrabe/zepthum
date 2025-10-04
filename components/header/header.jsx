@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { useState } from "react";
 import "./header.css";
 import dynamic from "next/dynamic";
+import ClickOutside from "../logic/clickOutside";
 
 const ProfileMenu = dynamic(() => import("../ui/ProfileMenu"), {
   ssr: false,
@@ -16,7 +19,10 @@ export default function Header({ toggleMenu, isMenuOpen }) {
   return (
     <header>
       <div className="left">
-        <div className="menu-container">
+        <ClickOutside
+          onClose={() => isMenuOpen && toggleMenu()}
+          className="menu-container"
+        >
           <div
             className={`menu ${isMenuOpen ? "menu-toggle" : ""}`}
             onClick={toggleMenu}
@@ -25,7 +31,7 @@ export default function Header({ toggleMenu, isMenuOpen }) {
             <div></div>
             <div></div>
           </div>
-        </div>
+        </ClickOutside>
         <div className="brand">
           <img src="/assets/svg/logo_tem.svg" alt="icon" className="logo" />
           <span className="name">Zepthum</span>
