@@ -1,28 +1,33 @@
 "use client";
+import { useState } from "react";
 import LoginBtn from "@/components/ui/LoginBtn";
 import "./login.css";
-import { useState, useEffect } from "react";
 import Loading from "@/components/ui/loading";
+import loginValidation from "@/components/logic/loginValidation";
 
 export default function LoginPage() {
   const [showLoading, setShowLoading] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { errors, validate } = loginValidation();
+
   if (showLoading) {
     return <Loading duration={500} onFinish={() => setShowLoading(false)} />;
   }
+
+  const handleValidate = () => validate({ email, password });
 
   return (
     <div className="split-container">
       <div className="left-side">
         <img src="/assets/images/iconKirby.webp" alt="Ilustraccion Login" />
       </div>
-      {/* principal*/}
+
       <div className="right-side">
         <div className="containerLogin">
           <div className="main">
-            {/* header*/}
+            {/* HEADER */}
             <div className="header">
               <div className="logo">
                 <img
@@ -39,12 +44,13 @@ export default function LoginPage() {
                 Gana puntos y lidera el ranking.
               </span>
             </div>
-            {/* Formulario*/}
+
+            {/* FORMULARIO */}
             <div className="form-section">
               <div className="form-container">
                 <h1>Iniciar sesión</h1>
                 <form id="login-form">
-                  <div className="input-group">
+                  <div className={`input-group ${errors.email ? "error" : ""}`}>
                     <label htmlFor="correo">Correo</label>
                     <input
                       type="email"
@@ -52,10 +58,15 @@ export default function LoginPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       name="email"
-                      required
                     />
+                    {errors.email && (
+                      <span className="error-message">{errors.email}</span>
+                    )}
                   </div>
-                  <div className="input-group">
+
+                  <div
+                    className={`input-group ${errors.password ? "error" : ""}`}
+                  >
                     <label htmlFor="password">Contraseña</label>
                     <input
                       type="password"
@@ -63,15 +74,25 @@ export default function LoginPage() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       name="password"
-                      required
                     />
+                    {errors.password && (
+                      <span className="error-message">{errors.password}</span>
+                    )}
                   </div>
+
                   <div className="olvidar-pass">
                     <a href="#">¿Olvidaste tu contraseña?</a>
                   </div>
-                  <LoginBtn email={email} password={password} />
+
+                  {/* Botón recibe validación desde aquí */}
+                  <LoginBtn
+                    email={email}
+                    password={password}
+                    onValidate={handleValidate}
+                  />
                 </form>
               </div>
+
               <div className="registrarse">
                 <p>¿No tienes Cuenta?</p>
                 <a href="/register">¡Regístrate ahora!</a>

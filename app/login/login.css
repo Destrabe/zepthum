@@ -177,6 +177,24 @@
 }
 
 /* ==========================
+   ERRORES
+========================== */
+.input-group.error input {
+  border: 1px solid rgb(241, 10, 50);
+}
+
+.input-group.error label {
+  color: rgb(241, 10, 50);
+}
+
+.error-message {
+  font-size: 0.85rem;
+  color: rgb(241, 10, 50);
+  display: block;
+  margin-top: 0.2rem;
+}
+
+/* ==========================
    OLVIDAR CONTRASEÑA
 ========================== */
 .olvidar-pass {
